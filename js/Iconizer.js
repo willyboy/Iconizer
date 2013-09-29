@@ -1,6 +1,6 @@
 (function(Iconizer){
-	Iconizer.icons=function(icons){
-		return new Icons(icons);	
+	Iconizer.icons=function(icons,target,options){
+		return new Icons(icons,target,options);	
 	}
 	function Icons(icons,target,options){
 		if(icons!=undefined){
