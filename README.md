@@ -7,7 +7,7 @@ A simple, pure JS utility for creating a set of event ready Font Awesome icons.
 This utility is namespaced to Iconizer. There are no dependencies. However, the code does use a forEach and if you want cross browser support, you may have to use a polyfill.
 
 ##Basic Usage
-The following code will take an array of objects that define your icons and the handlers associated with them and attach them to a specified DOM target.
+The following code will take an array of objects that define your icons and the handlers associated with them and attach them to a specified DOM node.
 ```javascript
 var iconsArray=[{class:"font awesome icon name (without icon-)",handler:myFunction,eventType:"click"}];
 var icons=Iconizer.icons(iconsArray);
@@ -21,11 +21,12 @@ var icons=Iconizer.icons(iconsArray,target,options);
 ```
 ##Icons object format
 The handler and eventType are optional. You can still use the utility to create icons without attaching any events to the icons.
-	{
+	
+	`{
 		class:"font awesome class name without icon-",
 	 	handler:function(){},
 	 	eventType:"an event, e.g. click"
-	}
+	}`
 
 ##API
 ###Iconizer.icons(iconsObjectOrArray,target,options)
