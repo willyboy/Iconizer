@@ -23,13 +23,17 @@
 		}
 		return this;
 	}
+	Icons.prototype.replace=function(icons,target,options){
+		//coming soon
+	}
 	Icons.prototype.addIconsToTarget=function(target,options){
 		options = options ? options:{};
 		var wrapper=document.createElement("div");
+		wrapper.setAttribute("class","iconizer-wrapper")
 		this.icons.forEach(function(element){
 			wrapper.appendChild(element.icon);
 		});
-		switch(options.position){
+		switch(options.location){
 			case "before" : target.insertBefore(wrapper,target.firstChild);
 			break;
 			case "append" :
@@ -40,11 +44,20 @@
 	}
 	Icons.prototype.removeIcons=function(){
 		if(this.icons && this.icons[0].icon.parentNode!=null){
-			var iconsWrapper = this.icons[0].icon.parentNode;
-			while (iconsWrapper.lastChild) {
-				iconsWrapper.removeChild(iconsWrapper.lastChild);
+			var iconsWrapper=this.icons[0].icon.parentNode;
+			var wrapperClass=iconsWrapper.getAttribute("class");
+			if(wrapperClass==null || wrapperClass.indexOf("iconizer-wrapper")===-1){
+				this.icons.forEach(function(element){
+					iconsWrapper.removeChild(element.icon);
+				});
 			}
-			iconsWrapper.parentNode.removeChild(iconsWrapper);
+			else{
+				while (iconsWrapper.lastChild) {
+					iconsWrapper.removeChild(iconsWrapper.lastChild);
+				}
+				iconsWrapper.parentNode.removeChild(iconsWrapper);
+			}
+			
 		}
 	}
 	function Icon(iconInfo){
