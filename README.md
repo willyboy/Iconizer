@@ -22,11 +22,11 @@ var icons=Iconizer.icons(iconsArray,target,options);
 ##Icons object format
 The handler and eventType are optional. You can still use the utility to create icons without attaching any events to the icons.
 	
-	`{
+	{
 		class:"font awesome class name without icon-",
 	 	handler:function(){},
 	 	eventType:"an event, e.g. click"
-	}`
+	}
 
 ##API
 ###Iconizer.icons(iconsObjectOrArray,target,options)
