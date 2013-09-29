@@ -34,11 +34,13 @@
 			wrapper.appendChild(element.icon);
 		});
 		switch(options.location){
-			case "before" : target.insertBefore(wrapper,target.firstChild);
-			break;
-			case "append" :
-			default		  :	target.appendChild(wrapper,target.firstChild);
-			break;			
+			case "before":
+				target.insertBefore(wrapper,target.firstChild);
+				break;
+			case "append":
+			default: 
+				target.appendChild(wrapper,target.firstChild);
+				break;			
 		}
 		return this;
 	}
