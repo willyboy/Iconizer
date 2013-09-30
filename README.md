@@ -11,7 +11,7 @@ The following code will take an array of objects that define your icons and the 
 ```javascript
 var iconsArray=[{class:"font awesome icon name (without icon-)",handler:myFunction,eventType:"click"}];
 var icons=Iconizer.icons(iconsArray);
-icons.addIconsToTarget(target,options);
+icons.addToTarget(target,options);
 ```
 OR to attach when first called:
 
@@ -42,12 +42,12 @@ var i=Iconizer.icons(iconsArray);
 $("body").append(i.icons[0].icon);
 ```
 
-###addIconsToTarget(target,options)
+###addToTarget(target,options)
 Target is a DOM node to attach the icons you have created to. Options currently only takes a location argument which can have the values "before" and "append" to tell the function where to put the icons.
 ```javascript
 var iconsArray=[{class:"envelope",handler:function(){},eventType:"click"}];
 var i=Iconizer.icons(iconsArray);
-i.addIconsToTarget(document.getElementById("container"),{location:"append"});
+i.addToTarget(document.getElementById("container"),{location:"append"});
 ```
 
 ###removeFromDom()
