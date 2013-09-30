@@ -4,7 +4,7 @@ Iconizer
 A simple, pure JS utility for creating a set of event ready Font Awesome icons. 
 
 ##Namespace and Dependencies
-This utility is namespaced to Iconizer. There are no dependencies. However, the code does use a forEach and if you want cross browser support, you may have to use a polyfill.
+This utility is namespaced to Iconizer. The only dependency is Font Awesome itself (support for image icons coming soon). The code does use a forEach and if you want cross browser support, you may have to use a polyfill.
 
 ##Basic Usage
 The following code will take an array of objects that define your icons and the handlers associated with them and attach them to a specified DOM node.
@@ -20,10 +20,11 @@ var iconsArray=[{class:"font awesome icon name (without icon-)",handler:myFuncti
 var icons=Iconizer.icons(iconsArray,target,options);
 ```
 ##Icons object format
-The handler and eventType are optional. You can still use the utility to create icons without attaching any events to the icons.
+You are required to have an image (img) or class. If a class is specified, you are creating a font awesome icon. If image is specified, you are creating an image icon. You can only have one or the other. If you have both, the image is the default. The handler and eventType are optional. 
 	
 	{
 		class:"font awesome class name without icon-",
+		img:"myimagesrc.png",
 	 	handler:function(){},
 	 	eventType:"an event, e.g. click"
 	}
@@ -49,24 +50,31 @@ var i=Iconizer.icons(iconsArray);
 i.addIconsToTarget(document.getElementById("container"),{location:"append"});
 ```
 
-###removeIcons()
+###removeFromDom()
 Will remove the icons that have been attached to the document from the document. 
 ```javascript
 var iconsArray=[{class:"font awesome icon name (without icon-)",handler:myFunction,eventType:"click"}];
 var i=Iconizer.icons(iconsArray);
 $("body").append(i.icons[0].icon);
-i.removeIcons();
+i.removeFromDom();
 ```
 
 ###update(iconsObjectOrArray,target,options)
-Does exact same thing as Iconizer.icons and will remove existing icons from your page.
+Updates the set of icons and removes the existing icons from the page.
 ```javascript
 var iconsArray=[{class:"envelope",handler:function(){},eventType:"click"}];
 var i=Iconizer.icons(iconsArray);
 $("body").append(i.icons[0].icon);
 i.update([{class:"envelope",handler:function(){},eventType:"click"},{class:"android",handler:function(){},eventType:"click"}],document.getElementsByTagName("body")[0]);
 ```
-
+###move(target,options)
+Moves the icons to a new target. Options is the same as addIconsToTarget.
+```javascript
+var iconsArray=[{class:"envelope",handler:function(){},eventType:"click"}];
+var i=Iconizer.icons(iconsArray);
+$("body").append(i.icons[0].icon);
+i.move(document.getElementsByTagName("li")[0]);
+```
 ###addHandler(handler,eventType)
 If you need to update the handler for a specific icon you must get the icon from Iconizer by accessing the icons property (an array of icons);
 eventType is the event (e.g. click) and handler is the function to call when the event occurs. If the eventType is undefined, it defaults to "click".
