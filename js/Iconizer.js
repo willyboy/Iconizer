@@ -3,7 +3,6 @@
 		return new Icons(icons,target,options);	
 	}
 	function Icons(icons,target,options){
-		this.defaultEvent="click";
 		if(icons!=undefined){
 			this.update(icons,target,options);
 		}
@@ -67,6 +66,7 @@
 		var icon=document.createElement("i");
 		icon.setAttribute("class","icon-"+iconInfo.class);
 		this.icon=icon;
+		this.defaultEvent="click";
 		if(iconInfo.handler!=undefined){
 			this.addHandler(iconInfo.handler,iconInfo.eventType);
 		}
