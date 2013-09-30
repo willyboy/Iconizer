@@ -3,6 +3,7 @@
 		return new Icons(icons,target,options);	
 	}
 	function Icons(icons,target,options){
+		this.defaultEvent="click";
 		if(icons!=undefined){
 			this.update(icons,target,options);
 		}
@@ -67,10 +68,10 @@
 		icon.setAttribute("class","icon-"+iconInfo.class);
 		this.icon=icon;
 		if(iconInfo.handler!=undefined){
-			this.addHandler(iconInfo.eventType,iconInfo.handler);
+			this.addHandler(iconInfo.handler,iconInfo.eventType);
 		}
 	}
-	Icon.prototype.addHandler=function(eventType,handler){
-		this.icon.addEventListener(eventType,handler,true);
+	Icon.prototype.addHandler=function(handler,eventType){
+		this.icon.addEventListener(eventType ? eventType:this.defaultEvent,handler,true);
 	}
 }( window.Iconizer = window.Iconizer || {}));

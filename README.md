@@ -67,11 +67,11 @@ $("body").append(i.icons[0].icon);
 i.update([{class:"envelope",handler:function(){},eventType:"click"},{class:"android",handler:function(){},eventType:"click"}],document.getElementsByTagName("body")[0]);
 ```
 
-###addHandler(eventType,handler)
+###addHandler(handler,eventType)
 If you need to update the handler for a specific icon you must get the icon from Iconizer by accessing the icons property (an array of icons);
-eventType is the event (e.g. click) and handler is the function to call when the event occurs.
+eventType is the event (e.g. click) and handler is the function to call when the event occurs. If the eventType is undefined, it defaults to "click".
 ```javascript
-var iconsArray=[{class:"envelope",handler:function(){},eventType:"click"}];
+var iconsArray=[{class:"envelope",handler:function(){},eventType:"mouseover"}];
 var i=Iconizer.icons(iconsArray);
 i.icons[0].addHandler("mousedown",function(){alert("Stop pushing me! I don't want to wake up yet.");});
 ```
