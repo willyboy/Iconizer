@@ -1,10 +1,10 @@
 Iconizer
 ========
 
-A simple, pure JS utility for creating a set of event ready Font Awesome icons. 
+A simple, pure JS utility for creating a set of event ready Font Awesome and image icons. 
 
 ##Namespace and Dependencies
-This utility is namespaced to Iconizer. The only dependency is Font Awesome itself (support for image icons coming soon). The code does use a forEach and if you want cross browser support, you may have to use a polyfill.
+This utility is namespaced to Iconizer. The only dependency is Font Awesome itself. The code does use a forEach and if you want cross browser support, you may have to use a polyfill.
 
 ##Basic Usage
 The following code will take an array of objects that define your icons and the handlers associated with them and attach them to a specified DOM node.
