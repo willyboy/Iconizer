@@ -20,13 +20,18 @@ var iconsArray=[{class:"font awesome icon name (without icon-)",handler:myFuncti
 var icons=Iconizer.icons(iconsArray,target,options);
 ```
 ##Icons object format
-You are required to have an image (img) or class. If a class is specified, you are creating a font awesome icon. If image is specified, you are creating an image icon. You can only have one or the other. If you have both, the image is the default. The handler and eventType are optional. 
+You are required to have an image (img) or class. If a class is specified, you are creating a font awesome icon. If image is specified, you are creating an image icon. You can only have one or the other. If you have both, the image is the default. The handler, eventType, and wrapper are optional. The wrapper allows you to wrap the icon in an element and some text. A use case for this would be creating buttons with icons.
 	
 	{
 		class:"font awesome class name without icon-",
 		img:"myimagesrc.png",
 	 	handler:function(){},
 	 	eventType:"an event, e.g. click"
+	 	wrapper:{
+	 		type:"element, e.g. button",
+	 		class:"class name",
+	 		text:"text to place inside the element"
+	 	}
 	}
 
 ##API
@@ -34,7 +39,7 @@ You are required to have an image (img) or class. If a class is specified, you a
 When called with an icon object or array of icon objects, Iconizer will create an object with the icons property set to an array of DOM nodes representing the icons and handlers you passed in. You can access each node individually or use the built in methods to attach all the nodes (wrapped in a div) to your document. 
 
 Optional:
-Target is a DOM node to attach the icons you have created to. Options currently only takes a location argument which can have the values "before" and "append" to tell the function where to put the icons.
+Target is a DOM node to attach the icons you have created to. Options currently takes a location argument which can have the values "before" and "append" to tell the function where to put the icons and a class argument which is a class that will be applied to the div that wraps up your icons.
 
 ```javascript
 var iconsArray=[{class:"envelope",handler:function(){},eventType:"click"}];

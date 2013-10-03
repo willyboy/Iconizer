@@ -37,7 +37,8 @@
 	Icons.prototype.addToTarget=function(target,options){
 		options = options ? options:{};
 		var wrapper=document.createElement("div");
-		wrapper.setAttribute("class","iconizer-wrapper")
+		var wrapperClass="iconizer-wrapper";
+		wrapper.setAttribute("class",(options.class ? options.class+" ":"")+wrapperClass)
 		this.insertIntoWrapper(wrapper);
 		switch(options.location){
 			case "before":
@@ -76,15 +77,26 @@
 		return false;
 	}
 	function Icon(info){
+		var icon,wrapper;
 		if(info.img){
-			var icon=document.createElement("img");
+			icon=document.createElement("img");
 			icon.setAttribute("src",info.img);
 		}
 		else{
-			var icon=document.createElement("i");
+			icon=document.createElement("i");
 			icon.setAttribute("class","icon-"+info.class);
 		}
-		this.icon=icon;
+		if(info.wrapper){
+			var wrapper=document.createElement(info.wrapper.type);
+			if(info.wrapper.class){
+				wrapper.setAttribute("class",info.wrapper.class);	
+			}
+			wrapper.appendChild(icon);
+			if(info.wrapper.text){
+				wrapper.appendChild(document.createTextNode(info.wrapper.text));	
+			}
+		}
+		this.icon=wrapper ? wrapper:icon;
 		this.defaultEvent="click";
 		if(info.handler!=undefined){
 			this.addHandler(info.handler,info.eventType);
